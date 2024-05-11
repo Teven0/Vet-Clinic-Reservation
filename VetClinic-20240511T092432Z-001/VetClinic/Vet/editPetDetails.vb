@@ -15,6 +15,7 @@
     Private Sub btnSaveChanges_Click(sender As Object, e As EventArgs) Handles btnSaveChanges.Click
         If CurrentPet IsNot Nothing Then
             CurrentPet.setInfo(txtPetName.Text, Val(txtPetAge.Text), txtPetBirthday.Text, txtPetWeight.Text, cmbPetType.Text, cmbVaccineStatus.Text)
+            Me.DialogResult = DialogResult.OK
             Me.Close()
         End If
     End Sub
@@ -22,6 +23,5 @@
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Me.Close()
     End Sub
-
 
 End Class
