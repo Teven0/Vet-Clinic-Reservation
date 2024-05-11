@@ -208,10 +208,26 @@ Public Class Form3
             For Each pet As Pets In Form1.curAccount.getPets()
                 If pet.getName() = selectedPetName Then
                     petToEdit = pet
+                    txtPetAge.Clear()
+                    txtPetBirth.Clear()
+                    txtPetStatus.Clear()
+                    txtPetType.Clear()
+                    txtPetWeight.Clear()
+                    RefreshPetList()
                     Exit For
                 End If
             Next
 
+            If petToEdit IsNot Nothing Then
+                Using frmEditPet As New editPetDetails()
+                    frmEditPet.CurrentPet = petToEdit
+                    If frmEditPet.ShowDialog() = DialogResult.OK Then
+                        RefreshPetList()
+                    End If
+                End Using
+            Else
+                MsgBox("Pet not found", vbExclamation)
+            End If
         End If
     End Sub
 
@@ -230,6 +246,11 @@ Public Class Form3
             For Each pet As Pets In Form1.curAccount.getPets()
                 If pet.getName() = selectedPetName Then
                     petToDelete = pet
+                    txtPetAge.Clear()
+                    txtPetBirth.Clear()
+                    txtPetStatus.Clear()
+                    txtPetType.Clear()
+                    txtPetWeight.Clear()
                     Exit For
                 End If
             Next
